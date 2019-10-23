@@ -72,6 +72,8 @@ bool ATcommands::sendCommand(char *command, char *reply, uint16_t timeout) {
   uint8_t idx = 0;
   bool replyMatch = false;
   timer = millis();
+  
+  memset(replybuffer, 0, sizeof(replybuffer));
 
   while (!replyMatch && millis() - timer < timeout) {
     if (mySerial->available()) {
